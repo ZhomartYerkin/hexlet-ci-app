@@ -13,17 +13,22 @@ jobs:
 
     env:
       RAILS_ENV: staging
-      DEBUG: 1
+      DEBUG: '1'
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Install (make setup)
         run: make setup
+
+      - name: Print Hello from Hexlet
+        uses: hexlet-components/hello-from-hexlet-action@release
 
       - name: Lint (make lint)
         run: make lint
